@@ -1,5 +1,5 @@
 name: test matrix 
-on: push
+on: registry_package
 jobs:
   build:
     runs-on: ${{ matrix.os }}

@@ -1,0 +1,27 @@
+{
+
+  "name": "@zhuOrg/yannpm",
+
+  "version": "1.0.2",
+
+  "description": "test push",
+
+  "main": "index.js",
+
+  "scripts": {
+
+    "test": "echo \"Error: note2 no test specified\" && exit 1"
+
+  },
+
+  "author": "yanjingzhu",
+
+  "license": "ISC",
+
+  "dependencies": {
+
+    "@zhuorg/customepack": "^1.0.1"
+
+  }
+
+}

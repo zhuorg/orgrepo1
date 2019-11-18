@@ -10,12 +10,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: ${{secrets.SKIP_RELEASE}} != 'true'
     strategy:
       matrix:
         node-version: [13.x]
 
     steps:
+      - run: echo YAY
+      - run: |
+          if [ "$MY_SECRET" != "true" ]; then
+            echo WOOHOO
+          fi
+        env:
+          MY_SECRET: ${{ secrets.SKIP_RELEASE }}
       - uses: actions/checkout@v1
  
       - name: Use Node.js ${{ matrix.node-version }}

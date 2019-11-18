@@ -10,13 +10,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: secrets.SKIP_RELEASE != 'true'
+    
     strategy:
       matrix:
         node-version: [13.x]
 
     steps:
       - uses: actions/checkout@v1
+        if: secrets.SKIP_RELEASE != 'true'
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:

@@ -1,8 +1,5 @@
 name: CI
-on:  
- pull_request:
-      types: [closed]
-     
+on: push
 jobs:
   build:
     #if: github.event.pull_request.

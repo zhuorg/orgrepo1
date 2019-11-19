@@ -1,19 +1,9 @@
 name: CI
-on: 
-  push:
-    tags:
-      - v1.*
-  issue_comment:
-    types: [created, deleted]
-  pull_request_review_comment:
-    types: [created, deleted]
-
-
-   
-  
-    
+on:  pull_request
+     
 jobs:
   build:
+    #if: github.event.pull_request.
     runs-on: ubuntu-latest
     steps:
       

@@ -1,11 +1,5 @@
 name: testif
-on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
+on: check_suite
 
 jobs:
   build:

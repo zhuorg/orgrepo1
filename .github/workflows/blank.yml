@@ -1,7 +1,9 @@
 name: CI
 on: 
-  release:
-    types: [published]
+  push:
+    tags:
+      - v1.*
+
 
    
   

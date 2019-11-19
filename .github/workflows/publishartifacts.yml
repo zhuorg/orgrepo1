@@ -1,7 +1,15 @@
 name: publish artifacts
-on: check_suite 
+on: push 
 jobs:
   build:
-    runs-on: unbuntu-latest
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+              # Artifact name
+          name: drop1
+              # Directory containing files to upload
+          path: ./projects/frontend/
     

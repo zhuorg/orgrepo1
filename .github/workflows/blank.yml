@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - v1.*
+  issue_comment:
+    types: [created, deleted]
 
 
    

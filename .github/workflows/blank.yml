@@ -3,9 +3,10 @@ on:
   pull_request:  
     paths: 
       - 'projects/frontend/**' 
+
 jobs:
   build:
-    #if: github.event.pull_request.
+    #if: startsWith(github.event.head_commit.message, 'Finally Merge')
     runs-on: ubuntu-latest
     steps:
       

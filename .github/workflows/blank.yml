@@ -1,5 +1,8 @@
 name: CI
-on: check_run
+on: 
+  pull_request:  
+    paths: 
+      - 'projects/frontend/**' 
 jobs:
   build:
     #if: github.event.pull_request.

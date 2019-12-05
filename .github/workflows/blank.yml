@@ -1,5 +1,5 @@
 name: CI
-on: push
+on: check_run
 jobs:
   build:
     #if: github.event.pull_request.

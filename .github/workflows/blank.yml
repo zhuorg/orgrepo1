@@ -14,16 +14,17 @@ jobs:
     - uses: actions/checkout@v1
 
 
-    - name: Create local changes
-      run: |
-        cat > sales123.txt
+   # - name: Create local changes
+   #   run: |
+   #     cat > sales123.txt
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add --all
-        git commit -m "Add changes" -a
-        git tag new2
+        git tag new3
+    #    git add --all
+    #    git commit -m "Add changes" -a
+        
     
     - name: Push changes
       uses: Woile/github-push-action@master

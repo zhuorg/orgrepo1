@@ -1,0 +1,7 @@
+name: trigger by another
+on: push
+jobs: 
+  job1: 
+  runs-on: unbuntu-latest
+  steps: 
+  - run: echo hello

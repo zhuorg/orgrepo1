@@ -16,13 +16,14 @@ jobs:
 
     - name: Create local changes
       run: |
-        cat > sales1.txt
+        cat > sales11.txt
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add --all
         git commit -m "Add changes" -a
+        git tag new2
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:

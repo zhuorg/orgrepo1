@@ -1,6 +1,8 @@
 name: trigger by another
 on: 
   push: 
+    tags: 
+      - '*'
     
 jobs: 
   job1: 

@@ -1,8 +1,6 @@
-name: CI
+name: Push 
 on: 
-  pull_request:  
-    paths: 
-      - 'projects/frontend/**' 
+  push: 
 
 jobs:
   build:
@@ -16,14 +14,16 @@ jobs:
       run: echo "$GITHUB_CONTEXT"
     - uses: actions/checkout@v1
 
-    - name: Run a one-line script 
 
-      run: echo Hello, world!
-
-    - name: Run a multi-line script 
-
+    - name: Create local changes
       run: |
-
-        echo Add other actions to build,
-
-        echo test, and deploy your project.
+        cat > sales.txt
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GPR_ACCESS_TOKEN }}

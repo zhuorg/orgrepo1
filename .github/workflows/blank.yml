@@ -19,7 +19,7 @@ jobs:
         cat > sales22.txt
     - name: Commit files
       run: |
-
+        git config user.name "GitHub Actions Bot"
         git add --all
         git commit -m "Add changes" -a
 # git tag new3

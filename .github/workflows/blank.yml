@@ -19,11 +19,14 @@ jobs:
         cat > sales1234.txt
     - name: Commit files
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
         git add --all
         git commit -m "Add changes" -a
 # git tag new3
+   #     git config --local user.email "action@github.com"
+   #     git config --local user.name "GitHub Action"
         
     
     - name: Push changes

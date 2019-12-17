@@ -16,7 +16,7 @@ jobs:
 
     - name: Create local changes
       run: |
-        cat > sales1234.txt
+        cat > sales12345.txt
     - name: Commit files
       run: |
 

@@ -7,10 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - uses: actions/checkout@v1
+    - run:  mkdir frontend-zip
     - uses: montudor/action-zip@v0.1.0
       with:
-         args: zip -qq -r ./projects/frontend/frontend.zip ./projects/frontend/
+         args: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
     - uses: actions/upload-artifact@master
       with:
           name: frontend
-          path: ./projects/frontend/
+          path: ./frontend-zip

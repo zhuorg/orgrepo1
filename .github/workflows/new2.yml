@@ -19,6 +19,6 @@ jobs:
       uses: svenstaro/upload-release-action@v1-release
       with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./frontend-zip
+          file: ./frontend-zip/frontend.zip
           asset_name: frontend
           tag: ${{ github.ref }}

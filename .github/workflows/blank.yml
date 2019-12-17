@@ -16,7 +16,7 @@ jobs:
 
     - name: Create local changes
       run: |
-        cat > sales223.txt
+        cat > sales2233.txt
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
@@ -33,5 +33,5 @@ jobs:
     - name: Push changes
       uses: Woile/github-push-action@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GPR_ACCESS_TOKEN }}
         tags: "true"

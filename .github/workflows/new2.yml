@@ -11,7 +11,14 @@ jobs:
     - uses: montudor/action-zip@v0.1.0
       with:
          args: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
-    - uses: actions/upload-artifact@master
+    #- uses: actions/upload-artifact@master
+    #  with:
+    #     name: frontend
+    #     path: ./frontend-zip
+    - name: Upload zip package to release
+      uses: svenstaro/upload-release-action@v1-release
       with:
-          name: frontend
-          path: ./frontend-zip
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./frontend-zip
+          asset_name: frontend
+          tag: ${{ github.ref }}

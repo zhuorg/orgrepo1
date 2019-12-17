@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v1
     - uses: montudor/action-zip@v0.1.0
       with:
-         args: zip -qq ./projects/frontend/frontend.zip -d ./projects/frontend/
+         args: zip -qq -r ./projects/frontend/frontend.zip ./projects/frontend/
     - uses: actions/upload-artifact@master
       with:
           name: frontend

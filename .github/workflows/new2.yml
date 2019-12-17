@@ -8,15 +8,10 @@ jobs:
     steps: 
     - uses: actions/checkout@v1
     - run:  mkdir frontend-zip
-    - run: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
-    #- uses: montudor/action-zip@v0.1.0
-    #  with:
-    #     args: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
-      
-    #- uses: actions/upload-artifact@master
-    #  with:
-    #     name: frontend
-    #     path: ./frontend-zip
+    #- run: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
+    - uses: montudor/action-zip@v0.1.0
+      with:
+         args: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
     - name: Upload zip package to release
       uses: svenstaro/upload-release-action@v1-release
       with:

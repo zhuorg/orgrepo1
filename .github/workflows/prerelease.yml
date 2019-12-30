@@ -1,0 +1,11 @@
+name: Upload Pre-Release
+
+on:
+  release:
+    types: [prereleased]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@master

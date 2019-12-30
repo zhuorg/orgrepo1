@@ -4,7 +4,7 @@ on:
      types: [published]
 jobs:
   build:
-    if: "github.release.prerelease != 'true' "
+    if: github.release.prerelease != 'true' 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1 

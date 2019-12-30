@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - uses: actions/checkout@v1
+    - run: echo hello
+      env: 
+        ss: ${{secrets.aa}} 
     - run:  mkdir frontend-zip
     #- run: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
     - uses: montudor/action-zip@v0.1.0

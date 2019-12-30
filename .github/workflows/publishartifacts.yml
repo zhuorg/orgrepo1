@@ -9,13 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v1 
       - run: |
-          echo $pre-release
+          echo $pre_release
           echo hello
           echo $login
           echo hello
           echo $GIT_CONTEXT
         env: 
           GIT_CONTEXT: ${{ tojson(github) }}
-          pre-release: ${{ github.event.release.prerelease }}
+          pre_release: ${{ github.event.release.prerelease }}
           login: ${{ github.event.release.created_at}}
     

@@ -19,7 +19,8 @@ jobs:
         cat > sales661.txt
     - name: Commit files
       run: |
-        
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
         git add --all
         git commit -m "Add changes" -a
         git tag v5.1

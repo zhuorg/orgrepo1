@@ -1,6 +1,6 @@
 name: Share data between jobs
 
-on: [push]
+on: check_run
 
 jobs:
   job_1:

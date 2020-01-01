@@ -11,20 +11,20 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
 
 
     - name: Create local changes
       run: |
-        cat > sales66.txt
+        cat > sales661.txt
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
         git add --all
         git commit -m "Add changes" -a
-        git tag v5.0
-        git push origin v5.0
+        git tag v5.1
+        git push origin v5.1
 
      
     #- name: Push changes

@@ -1,5 +1,5 @@
 name: Upload Release
-on: push
+on: check_run
 jobs:
   build:
     runs-on: ubuntu-latest

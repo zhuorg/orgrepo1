@@ -4,18 +4,18 @@ on:
      types: [published]
 jobs:
   build:
-    if: "!github.event.release.prerelease" 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - run: |
-          echo $pre_release
-          echo hello
-          echo $login
-          echo hello
-          echo $GIT_CONTEXT
-      env: 
-          GIT_CONTEXT: ${{ tojson(github) }}
-          pre_release: ${{ github.event.release.prerelease }}
-          login: ${{ github.event.release.created_at}}
+       - uses: actions/checkout@v2 
+       - uses: actions/upload-artifact@v1.0.0
+         with: 
+           name: drop
+           path: projects/frontend/
+  download:
+     runs-on: ubuntu-latest
+     steps: 
+       - uses: actions/download-artifact@v1.0.0
+         with:
+           name: drop
+  
     

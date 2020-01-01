@@ -16,5 +16,5 @@ jobs:
        - uses: actions/download-artifact@v1
          with:
            name: my_artifact
-  
+       - run: exit 1  
     

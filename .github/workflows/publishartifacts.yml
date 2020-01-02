@@ -10,4 +10,10 @@ jobs:
        - run: echo $EVENT
          env: 
            EVENT: ${{ tojson(github.event) }} 
+       - uses: rjstone/discord-webhook-notify@v1
+         with:
+           severity: warn
+           details: Test !
+           description: '${{ github.event.release.name }} and ${{ github.event.release.body }}' 
+           webhookUrl:  https://app.slack.com/client/T433X3B6J/C42DB3JJW
     

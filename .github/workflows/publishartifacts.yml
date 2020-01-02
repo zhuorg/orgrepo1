@@ -1,20 +1,13 @@
 name: Upload Release
-on: push
+on: 
+ release:
+   type: [published]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
        - uses: actions/checkout@v2 
-       - uses: actions/upload-artifact@v1
-         with: 
-           name: my_artifact
-           path: projects/frontend/
-  download:
-     runs-on: ubuntu-latest
-     needs: [build]
-     steps: 
-       - uses: actions/download-artifact@v1
-         with:
-           name: my_artifact
-       - run: exit 1  
+       - run: echo $EVENT
+         env: 
+           EVENT: ${{ tojson(github.event) }} 
     

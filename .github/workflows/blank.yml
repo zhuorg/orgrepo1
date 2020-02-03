@@ -1,5 +1,8 @@
 name: Push 
-on:  check_run 
+on:  
+  push: 
+    tags:
+    - feature.*
 
 jobs:
   build:

@@ -1,7 +1,6 @@
 name: Upload Release
 on: 
- release:
-   type: [published]
+ check_suite:
 jobs:
   build:
     runs-on: ubuntu-latest

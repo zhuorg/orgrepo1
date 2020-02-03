@@ -1,8 +1,9 @@
 name: Push 
 on:  
   push: 
-    tags:
-    - feature.*
+     tags:
+      - 0.*
+      - 1.*
 
 jobs:
   build:

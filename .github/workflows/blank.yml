@@ -14,7 +14,7 @@ jobs:
     
     - name: use output
       run: 
-        echo '$input' | jq '.event_type'
+        echo ' $input ' | jq '.event_type'
     
       env:
         input: ${{ tojson( steps.set.outputs.json_var) }}

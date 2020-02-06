@@ -13,10 +13,11 @@ jobs:
          echo ::set-output name=json_var::'[ { "name": "test", "client_payload": "111" }, { "name": "test2", "client_payload": "222" } ] '
     
     - name: use output
+#echo $json_var | jq '.[].name'
       run: |
-        echo $json_var | jq '.[].name'
+        echo $json_var
       env:
-        json_var: ${{ steps.set.outputs.json_var}}
+        json_var: ${{ steps.set.outputs.json_var.[0].name}}
     #- uses: actions/checkout@v2
     - name: Create local changes
       if: 1!=1

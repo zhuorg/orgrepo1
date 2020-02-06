@@ -10,12 +10,12 @@ jobs:
     - name: set output
       id: set
       run: |
-         echo ::set-env name=json_var::{ "event_type": "test","client_payload": "111" } 
+         echo ::set-output name=json_var::{ "event_type": "test","client_payload": "111" } 
     
     - name: use output
       run: echo $input
       env:
-        input: ${{ toJson(json_var) }}
+        input: ${{ toJson(steps.set.output.json_var) }}
     
     #- uses: actions/checkout@v2
     - name: Create local changes

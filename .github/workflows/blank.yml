@@ -10,7 +10,7 @@ jobs:
     - name: set output
       id: set
       run: |
-         echo ::set-output name=json_var::{ "event_type": "test", "client_payload": "111" } 
+         echo ::set-output name=json_var::'{ "event_type": "test", "client_payload": "111" }'
     
     - name: use output
       run: 

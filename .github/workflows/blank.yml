@@ -18,7 +18,7 @@ jobs:
         echo $input.event_type
     
       env:
-        input: ${{ toJson(steps.set.outputs.json_var) }}
+        input: ${{ steps.set.outputs.json_var }}
     
     #- uses: actions/checkout@v2
     - name: Create local changes

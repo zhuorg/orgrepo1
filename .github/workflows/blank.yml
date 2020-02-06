@@ -13,12 +13,14 @@ jobs:
          echo ::set-output name=json_var::'{ "event_type": "test", "client_payload": "111" }'
     
     - name: use output
-      run: 
-        echo ' $input ' | jq '.event_type'
+      run: |
+        echo '{ "foo": 123, "bar": 456 }' | jq '.foo'
+        echo $json_var1 | jq '.event_type'
+        echo ' $json_var ' | jq '.event_type'
     
       env:
-        input: ${{ tojson( steps.set.outputs.json_var) }}
-    
+        json_var: ${{ tojson( steps.set.outputs.json_var) }}
+        json_var1: ${{ steps.set.outputs.json_var}}
     #- uses: actions/checkout@v2
     - name: Create local changes
       if: 1!=1

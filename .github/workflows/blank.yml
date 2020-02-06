@@ -14,10 +14,10 @@ jobs:
     
     - name: use output
       run: 
-        jq -c '.stuff | fromjson' $input
+        $input | jq '.event_type'
     
       env:
-        input: ${{ steps.set.outputs.json_var }}
+        input: ${{ tojson( steps.set.outputs.json_var) }}
     
     #- uses: actions/checkout@v2
     - name: Create local changes

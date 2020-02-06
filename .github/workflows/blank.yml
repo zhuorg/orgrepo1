@@ -14,7 +14,7 @@ jobs:
     
     - name: use output
       run: |
-        echo $json_var | jq '.name'
+        echo $json_var | jq '.[].name'
       env:
         json_var: ${{ steps.set.outputs.json_var}}
     #- uses: actions/checkout@v2

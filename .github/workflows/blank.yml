@@ -15,7 +15,7 @@ jobs:
     - name: use output
       run: echo $input
       env:
-        input: ${{ toJSON(steps.set.output.json_var) }}
+        input: ${{ toJson(json_var) }}
     
     #- uses: actions/checkout@v2
     - name: Create local changes

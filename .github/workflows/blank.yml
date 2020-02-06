@@ -11,17 +11,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-    - name: Dump GitHub context
+    - name: set output
+      id: set
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-    - uses: actions/checkout@v2
-
-
+      run: |
+         echo "$GITHUB_CONTEXT"
+         echo "::set-env name=json_var::{ "event_type": "test","client_payload": "111" }
+    
+    - name: use output
+      run: echo $input
+      env:
+        input: ${{ toJSON(steps.set.output.json_var) }}
+    
+    #- uses: actions/checkout@v2
     - name: Create local changes
+      if: 1!=1
       run: |
         cat > sales661.txt
     - name: Commit files
+      if: 1!=1
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"

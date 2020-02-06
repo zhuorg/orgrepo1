@@ -13,7 +13,10 @@ jobs:
          echo ::set-output name=json_var::{ "event_type": "test", "client_payload": "111" } 
     
     - name: use output
-      run: echo $input
+      run: 
+        echo $input
+        echo $input.event_type
+    
       env:
         input: ${{ toJson(steps.set.outputs.json_var) }}
     

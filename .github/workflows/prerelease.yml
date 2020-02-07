@@ -1,8 +1,7 @@
 name: Upload Pre-Release
 
 on:
-  release:
-    types: [prereleased]
+  push: 
 
 jobs:
   build:

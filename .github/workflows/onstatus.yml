@@ -1,0 +1,10 @@
+name: on status
+on: status
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+       
+    steps:
+     - uses: actions/checkout@v1
+
+        

@@ -5,11 +5,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # help us who how we are running in the container
+      
       - run: whoami
-      - run: id
-      - run: google-chrome --version
-      - run: firefox --version
-
-
+      - run: echo $GITHUB
+        env: 
+          GITHUB: ${{ github }}
 

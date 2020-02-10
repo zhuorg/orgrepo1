@@ -11,3 +11,9 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
        run: echo "$GITHUB_CONTEXT"
 
+     - name: update deploy status
+       if: always()
+       uses: unacast/actions-github-deployment-status@0.2
+       with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         status: ${{ job.status }}

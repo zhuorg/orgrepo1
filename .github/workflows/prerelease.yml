@@ -8,7 +8,7 @@ jobs:
       options: --user 1001
     steps:
       # help us who how we are running in the container
-     # - run: whoami
+      - uses: actions/checkout@v2
       - run: id
       - run: google-chrome --version
       - run: firefox --version

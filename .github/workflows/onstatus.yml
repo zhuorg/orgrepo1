@@ -1,10 +1,13 @@
-name: on status
-on: status
-jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-       
-    steps:
-     - uses: actions/checkout@v1
+on: check_suite
 
-        
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+    - name: Hello world action step
+      id: hello
+      uses: actions/hello-world-javascript-action@v1
+      with:
+        who-to-greet: 'Mona the Octocat'

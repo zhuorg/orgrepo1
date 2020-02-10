@@ -1,14 +1,10 @@
-name: Upload Website1
-
-on:
-  push:
-    branches:
-    - master
-env: 
-  AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+name: CI
+on: [push]
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - uses: jakejarvis/s3-sync-action@v0.5.1
+    - uses: actions/checkout@v1
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v1
 

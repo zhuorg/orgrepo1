@@ -10,6 +10,5 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
     - uses: jakejarvis/s3-sync-action@v0.5.1
 

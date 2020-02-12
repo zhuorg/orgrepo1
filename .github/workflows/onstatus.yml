@@ -8,8 +8,8 @@ jobs:
     steps:
     - name: get version
       run:  |
-        echo $RELEASE_VERSION
-        echo ${RELEASE_VERSION:11}
+        echo ${REF:11}
+        echo "::set-output name=RELEASE_VERSION::${REF:11}"
       env:
-        RELEASE_VERSION: ${{ github.ref }}
-
+        REF: ${{ github.ref }}
+    - run: echo $RELEASE_VERSION

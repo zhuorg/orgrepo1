@@ -9,8 +9,9 @@ jobs:
     - name: get version
       run:  |
         echo $RELEASE_VERSION
-        $version = ${ RELEASE_VERSION:11 }
+        version= ${ RELEASE_VERSION:11 }
         echo $version
       env:
         RELEASE_VERSION: ${{ github.ref }}
+
 

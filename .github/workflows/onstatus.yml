@@ -7,7 +7,10 @@ jobs:
     name: get version
     steps:
     - name: get version
-      run:   echo $RELEASE_VERSION
+      run:  |
+        echo $RELEASE_VERSION
+        version = ${RELEASE_VERSION:11}
+        echo $version
       env:
         RELEASE_VERSION: ${{ github.ref }}
 

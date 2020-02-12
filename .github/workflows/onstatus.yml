@@ -1,13 +1,13 @@
-on: check_suite
+on: push
 
 
 jobs:
-  hello_world_job:
+  version:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: get version
     steps:
-    - name: Hello world action step
-      id: hello
-      uses: actions/hello-world-javascript-action@v1
-      with:
-        who-to-greet: 'Mona the Octocat'
+    - name: get version
+      run:   echo $RELEASE_VERSION
+      env:
+        RELEASE_VERSION: ${{ github.ref }}
+

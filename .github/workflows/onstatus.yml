@@ -9,7 +9,7 @@ jobs:
     - name: get version
       run:  |
         echo ${REF:11}
-        echo "::set-output name=RELEASE_VERSION::${REF:11}"
+        echo "::set-env name=RELEASE_VERSION::${REF:11}"
       env:
         REF: ${{ github.ref }}
     - run: echo $RELEASE_VERSION

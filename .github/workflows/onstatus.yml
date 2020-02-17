@@ -2,12 +2,24 @@ on: push
 
 
 jobs:
-  version:
+  job1:
     runs-on: ubuntu-latest
-    name: get version
     steps:
-    - name: get version
-      run:  |
+    - run:  |
         echo ${GITHUB_REF:11}
         echo "::set-env name=RELEASE_VERSION::${GITHUB_REF:11}"
     - run: echo $RELEASE_VERSION
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+    - run:  |
+        abc hhh
+    - uses: actions/upload-artifact@v1
+      with:
+        name: drop2
+        path: new1.txt
+  job3:
+    if: always()
+    runs-on: [ubuntu-latest]
+    needs: [job1, job2]
+       

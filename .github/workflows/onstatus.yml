@@ -12,6 +12,7 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - run:  |
         abc hhh
     - uses: actions/upload-artifact@v1

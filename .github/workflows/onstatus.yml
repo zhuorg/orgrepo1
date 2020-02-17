@@ -15,6 +15,7 @@ jobs:
     - run:  |
         abc hhh
     - uses: actions/upload-artifact@v1
+      if: always()
       with:
         name: drop2
         path: new1.txt

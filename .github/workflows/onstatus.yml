@@ -25,6 +25,7 @@ jobs:
     runs-on: [ubuntu-latest]
     needs: [job1, job2]
     steps:
+      - uses: actions/checkout@v2
       - run: |
           ./APIJson.sh $GITHUBTOKEN /actions/runs/$GITHUB_RUN_ID/jobs | grep '"name":' |sort
       - uses: actions/download-artifact@v1

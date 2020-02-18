@@ -27,6 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
+          echo $GITHUB_RUN_ID
           ./APIJson.sh $GITHUBTOKEN /actions/runs/$GITHUB_RUN_ID/jobs | grep '"name":' |sort
       - uses: actions/download-artifact@v1
         with:

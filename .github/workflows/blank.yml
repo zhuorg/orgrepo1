@@ -12,11 +12,9 @@ jobs:
         repository: zhuorg/hello-github-actions
         token: ${{secrets.PAT_FOR_PUSH}}
     - name: Create local changes
-      if: 1!=1
       run: |
         cat > sales661.txt
     - name: Commit files
-      if: 1!=1
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"

@@ -7,17 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-    - name: set output
-      id: set
-      run: |
-         echo ::set-output name=json_var::'[ { "name": "test", "client_payload": "111" }, { "name": "test2", "client_payload": "222" } ] '
-    
-    - name: use output
-      run: |
-        echo $json_var | jq '.[].name'
-      env:
-        json_var: ${{ steps.set.outputs.json_var}}
-    #- uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      with:
+        repository: zhuorg/hello-github-actions
+        token: ${{secrets.PAT_FOR_PUSH}}
     - name: Create local changes
       if: 1!=1
       run: |
@@ -29,12 +22,7 @@ jobs:
         git config --local user.name "github-actions"
         git add --all
         git commit -m "Add changes" -a
-        git tag v5.1
-        git push origin v5.1
-
-     
-    #- name: Push changes
-    #  uses: Woile/github-push-action@master
-    #  with:
-    #    github_token: ${{ secrets.GPR_ACCESS_TOKEN }}
-    #   tags: "true"
+        git push https://$USERNAME:$REPO_KEY@github.com/hello-github-actions.git $GITHUB_REF
+      env:
+        REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
+        USERNAME: github-actions

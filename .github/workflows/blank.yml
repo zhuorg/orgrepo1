@@ -1,6 +1,6 @@
 name: Push 
 on:  
-  check_suite: 
+  push: 
 
 jobs:
   build:

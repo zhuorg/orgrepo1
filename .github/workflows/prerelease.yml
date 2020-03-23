@@ -1,5 +1,5 @@
-name: CI
-on: deployment
+name: test secrets
+on: pull_request
 jobs:
   build:
     runs-on: ubuntu-latest

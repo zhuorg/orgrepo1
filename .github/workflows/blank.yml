@@ -20,7 +20,9 @@ jobs:
        #continue-on-error: true
      - name: step3
        if: always() && steps.step2.outcome == 'failure'
-       run: echo "hello 3"
+       run: | 
+          echo "hello 3"
+          wget https://raw.githubusercontent.com/mathieudutour/github-tag-action/src/main.ts
        id: step3
        
      - uses: actions/checkout@v2

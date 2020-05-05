@@ -15,7 +15,6 @@ jobs:
      - name: step2
        run: | 
           echo "hello 2"
-          fff
        id: step2
        #continue-on-error: true
      - name: step3

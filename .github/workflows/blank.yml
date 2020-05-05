@@ -1,26 +1,42 @@
 name: Push 
 on:  
-  check_suite: 
+  push: 
+    paths: 
+      - '.github/workflows/blank.yml'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      
-    - uses: actions/checkout@v2
-      with:
-        repository: zhuorg/hello-github-actions
-        token: ${{secrets.PAT_FOR_PUSH}}
-    - name: Create local changes
-      run: |
-        cat > sales661.txt
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "github-actions"
-        git add --all
-        git commit -m "Add changes" -a
-        git push https://$USERNAME:$REPO_KEY@github.com/zhuorg/hello-github-actions.git $GITHUB_REF
-      env:
-        REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
-        USERNAME: github-actions
+     - name: step1
+       run: echo "hello 1"
+       id: step1
+       continue-on-error: true
+     - name: step2
+       run: | 
+          echo "hello 2"
+          fff
+       id: step2
+       continue-on-error: true
+     - name: step3
+       if: steps.step2.outcome == 'failure'
+       run: echo "hello 3"
+       id: step3
+       
+   # - uses: actions/checkout@v2
+   #   with:
+   #     repository: zhuorg/hello-github-actions
+   #     token: ${{secrets.PAT_FOR_PUSH}}
+   # - name: Create local changes
+   #   run: |
+   #     cat > sales661.txt
+   # - name: Commit files
+   #   run: |
+   #     git config --local user.email "action@github.com"
+   #     git config --local user.name "github-actions"
+   #     git add --all
+   #     git commit -m "Add changes" -a
+   #     git push https://$USERNAME:$REPO_KEY@github.com/zhuorg/hello-github-actions.git $GITHUB_REF
+   #   env:
+   #     REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
+   #     USERNAME: github-actions

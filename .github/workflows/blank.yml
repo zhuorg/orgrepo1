@@ -22,7 +22,7 @@ jobs:
        if: always() && steps.step2.outcome == 'failure'
        run: | 
           echo "hello 3"
-          wget https://raw.githubusercontent.com/mathieudutour/github-tag-action/src/master/main.ts
+          wget https://raw.githubusercontent.com/mathieudutour/github-tag-action/master/src/main.ts
        id: step3
        
      - uses: actions/checkout@v2

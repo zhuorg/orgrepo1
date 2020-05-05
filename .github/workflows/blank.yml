@@ -19,7 +19,7 @@ jobs:
        id: step2
        #continue-on-error: true
      - name: step3
-       if: steps.step2.outcome == 'failure'
+       if: always() && steps.step2.outcome == 'failure'
        run: echo "hello 3"
        id: step3
        

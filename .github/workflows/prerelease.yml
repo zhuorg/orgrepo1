@@ -17,5 +17,5 @@ jobs:
        uses: johnwbyrd/update-release@v1.0.0
        with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          asset: ./the-file-you-want-to-release.zip
+          files: ./1.0.0.zip .github/workflows/prerelease.yml
           tag: '1.0.0'

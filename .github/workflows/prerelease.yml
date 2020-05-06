@@ -14,7 +14,7 @@ jobs:
           echo $GITHUB_REPOSITORY
 
      - name: Update release
-       uses: johnwbyrd/update-release@v1
+       uses: johnwbyrd/update-release@master
        with:
           token: ${{ secrets.GITHUB_TOKEN }}
           asset: ./the-file-you-want-to-release.zip

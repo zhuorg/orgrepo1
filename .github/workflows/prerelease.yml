@@ -18,4 +18,4 @@ jobs:
        with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: ./.github/workflows/prerelease.yml
-          tag: '1.0.0'
+          release: '1.0.0'

@@ -9,10 +9,12 @@ jobs:
      - name: Dump GitHub context
        env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-       run: echo "$GITHUB_CONTEXT"
+       run: |
+          echo "$GITHUB_CONTEXT"
+          echo $GITHUB_REPOSITORY
 
      - name: update deploy status
-       if: always()
+       if: failure()
        uses: unacast/actions-github-deployment-status@0.2
        with:
          github_token: ${{ secrets.GITHUB_TOKEN }}

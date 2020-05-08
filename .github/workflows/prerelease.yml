@@ -1,5 +1,6 @@
 name: test secrets
-on: push
+on:
+  deployment
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,10 +13,10 @@ jobs:
        run: |
           echo "$GITHUB_CONTEXT"
           echo $GITHUB_REPOSITORY
-     - uses: actions/checkout@v2
-     - name: Update release
-       uses: johnwbyrd/update-release@v1.0.0
-       with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: ./.github/workflows/prerelease.yml
-          release: '1.0.0'
+#      - uses: actions/checkout@v2
+#      - name: Update release
+#        uses: johnwbyrd/update-release@v1.0.0
+#        with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           files: ./.github/workflows/prerelease.yml
+#           release: '1.0.0'

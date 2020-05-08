@@ -1,18 +1,17 @@
-name: test secrets
+name: deployment
 on:
   deployment
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      
      - name: Dump GitHub context
        env:
-          GITHUB_CONTEXT: ${{ github.event.deployment.environment }}
+          GITHUB_CONTEXT: ${{ tojson(github) }}
+          ENVIRONMENT: ${{ github.event.deployment.environment }}
        run: |
           echo "$GITHUB_CONTEXT"
-          echo $GITHUB_REPOSITORY
+          echo $ENVIRONMENT
 #      - uses: actions/checkout@v2
 #      - name: Update release
 #        uses: johnwbyrd/update-release@v1.0.0

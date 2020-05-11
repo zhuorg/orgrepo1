@@ -8,8 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-     - run: 
+     - run: |
         yarn cache dir
+        echo "::set-output name=dir::$(yarn cache dir)"
    # - name: Create local changes
    #   run: |
    #     cat > sales661.txt

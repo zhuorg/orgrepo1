@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version:  ${{needs.getchange.outputs.python}} 
+        python-version: [3.5, 3.7]
 
     steps:
     - uses: actions/checkout@v2

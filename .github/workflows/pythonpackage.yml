@@ -16,13 +16,12 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - id: changes
-       run: echo "::set-output name=python::[3.5, 3.7]"
+       run: echo "::set-output name=python::{\"include\":[{\"python\":\"3.5\" },{\"python\":\"3.7\"}]}"
   build:
     needs: [getchange]
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        python-version: ${{ needs.getchange.outputs.python }}
+      matrix: ${{ fromJson(needs.getchange.outputs.python) }}
 
     steps:
     - uses: actions/checkout@v2

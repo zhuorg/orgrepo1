@@ -8,26 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-     - name: step1
-       run: echo "hello 1"
-       id: step1
-       continue-on-error: true
-     - name: step2
-       run: | 
-          echo "hello 2"
-       id: step2
-       #continue-on-error: true
-     - name: step3
-       if: always() && steps.step2.outcome == 'failure'
-       run: | 
-          echo "hello 3"
-          wget https://raw.githubusercontent.com/mathieudutour/github-tag-action/master/src/main.ts
-       id: step3
-       
-     - uses: actions/checkout@v2
-       with:
-         repository: zhuorg/hello-github-actions
-         token: ${{secrets.PAT_FOR_PUSH}}
+     - run: 
+        yarn cache dir
    # - name: Create local changes
    #   run: |
    #     cat > sales661.txt

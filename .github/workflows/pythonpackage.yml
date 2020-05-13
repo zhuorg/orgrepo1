@@ -18,8 +18,7 @@ jobs:
 #       with:
 #         python-version: 2.7.18
     - run: |
-        export LDFLAGS="-L/usr/local/opt/zlib/lib"
-        export CPPFLAGS="-I/usr/local/opt/zlib/include"
+        brew upgrade
         pyenv install -v 2.7.18
     - run:  python zlib.py
 

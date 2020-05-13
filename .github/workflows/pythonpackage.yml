@@ -18,6 +18,8 @@ jobs:
       with:
         python-version: 2.7.18
     - run: 
+        brew install zlib
         export LDFLAGS="-L/usr/runner/opt/zlib/lib"
         export CPPFLAGS="-I/usr/runner/opt/zlib/include"
         python zlib.py
+      shell: bash

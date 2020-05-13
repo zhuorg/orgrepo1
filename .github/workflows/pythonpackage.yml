@@ -18,4 +18,5 @@ jobs:
       with:
         python-version: 2.7.18
     - run: 
+        brew install zlib
         python zlib.py

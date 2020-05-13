@@ -4,29 +4,18 @@
 name: Python package
 
 on:
-  check_suite:
+  push:
 
 jobs:
-  getchange:
-   outputs:
-      matrix: ${{ steps.changes.outputs.matrix }}
-   runs-on: ubuntu-latest
-   steps:
-     - id: changes
-       ## set matrix value based on file changes
-       run: | 
-         
-         echo "::set-output name=matrix::{\"include\":[{\"python\":\"3.5\" },{\"python\":\"3.7\"}]}"
+
   build:
-    needs: [getchange]
     runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJson(needs.getchange.outputs.matrix) }}
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python }}
+    - name: Set up Python 
       uses: actions/setup-python@v1
       with:
-        python-version: ${{ matrix.python }}
-   
+        python-version: 2.7.18
+    - run: 
+        pkg-config zlib --libs

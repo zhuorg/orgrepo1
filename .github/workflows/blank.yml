@@ -21,6 +21,7 @@ jobs:
         .github/bin/fail-script.ps1 > .github/bin/fail.log
     
     - name: Upload a Build Artifact
+      if: always()
       uses: actions/upload-artifact@v2
       with:
         # Artifact name

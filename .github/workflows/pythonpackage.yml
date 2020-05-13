@@ -18,7 +18,9 @@ jobs:
 #       with:
 #         python-version: 2.7.18
     - run: |
-        ls /Library/Developer/CommandLineTools/Packages/
+        pip install pyenv
+        pyenv versions
+ 
   #sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.15.pkg -target /
     - run:  python zlib.py
 

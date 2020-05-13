@@ -18,4 +18,4 @@ jobs:
       with:
         python-version: 2.7.18
     - run: 
-        pkg-config zlib --libs
+        brew info zlib

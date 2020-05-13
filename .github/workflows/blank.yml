@@ -4,23 +4,23 @@ on:
     paths: 
       - '.github/workflows/blank.yml'
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
   build:
-    runs-on: ubuntu-latest
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-     - run: |
-        yarn cache dir
-        echo "::set-output name=dir::$(yarn cache dir)"
-   # - name: Create local changes
-   #   run: |
-   #     cat > sales661.txt
-   # - name: Commit files
-   #   run: |
-   #     git config --local user.email "action@github.com"
-   #     git config --local user.name "github-actions"
-   #     git add --all
-   #     git commit -m "Add changes" -a
-   #     git push https://$USERNAME:$REPO_KEY@github.com/zhuorg/hello-github-actions.git $GITHUB_REF
-   #   env:
-   #     REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
-   #     USERNAME: github-actions
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Fail script
+      run: |
+        try {
+              throw (new-object "Exception" @('foo'))
+        } catch {
+        write-host "caught failure: $_"
+        }
+        throw "Failed"

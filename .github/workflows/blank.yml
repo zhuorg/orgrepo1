@@ -18,13 +18,13 @@ jobs:
 
     - name: Fail script
       run: |
-        .github/bin/fail-script.ps1 > .github/bin/fail.log
+        .github/bin/fail-script.ps1 
     
-    - name: Upload a Build Artifact
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: logs
-        # A file, directory or wildcard pattern that describes what to upload
-        path: .github/bin/fail.log
+#     - name: Upload a Build Artifact
+#       if: always()
+#       uses: actions/upload-artifact@v2
+#       with:
+#         # Artifact name
+#         name: logs
+#         # A file, directory or wildcard pattern that describes what to upload
+#         path: .github/bin/fail.log

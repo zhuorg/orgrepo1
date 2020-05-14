@@ -20,7 +20,7 @@ jobs:
     - id: test1
       run: |
         pip install pyenv
-        pyenv versions
+        sleep 60s
  
   #sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.15.pkg -target /
     - id: test2 

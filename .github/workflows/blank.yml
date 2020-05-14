@@ -3,6 +3,7 @@ on:
   push: 
     paths: 
       - '.github/workflows/blank.yml'
+      - '.github/bin/*'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

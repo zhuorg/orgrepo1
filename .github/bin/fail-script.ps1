@@ -6,5 +6,5 @@ try {
 catch {
           write-host "caught failure: $_"
 }
-throw "Failed"
+Write-Error -Message 'Test Error' ;
 Write-Verbose -Message "Searching the Application Event Log."

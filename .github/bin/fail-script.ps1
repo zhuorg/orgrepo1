@@ -1,3 +1,4 @@
+$ErrorView = "NormalView"
 try {
           throw (new-object "Exception" @('foo'))
      } 

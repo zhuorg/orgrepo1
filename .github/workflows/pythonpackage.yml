@@ -24,7 +24,7 @@ jobs:
  
   #sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.15.pkg -target /
     - id: test2 
-      if: "success() || steps.test_brain.outcome == failure() "
+      if: "success() || steps.test1.outcome == failure() "
       run:  python zlib.py
       
 

@@ -1,4 +1,5 @@
 $ErrorView = "NormalView"
+$ErrorActionPreference = 'Break'
 try {
           throw (new-object "Exception" @('foo'))
      } 

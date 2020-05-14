@@ -12,19 +12,13 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-#     - name: Set up Python 
-#       uses: actions/setup-python@v1
-#       with:
-#         python-version: 2.7.18
-    - id: test1
+    - name: set output
+      id: set
       run: |
-        
-        sleep 60s
- 
-  #sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.15.pkg -target /
-    - id: test2 
-      if: "success() || steps.test1.outcome == 'failure' "
-      run:  python zlib.py
-      
+         echo ::set-output name=json_var::'[ { "name": "test", "client_payload": "111" }, { "name": "test2", "client_payload": "222" } ] '
+    - name: use output
+      run: |
+        echo $json_var | jq '.[].name'
+      env:
+        json_var: ${{ steps.set.outputs.json_var}}
 

@@ -7,17 +7,17 @@ defaults:
     shell: bash
 on:
   push:
+    paths: 
+      - '.github/workflows/pythonpackage.yml'
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - name: set output
       id: set
-      run: |
-         echo ::set-output name=json_var::'[ { "name": "test", "client_payload": "111" }, { "name": "test2", "client_payload": "222" } ] '
+      run: .github/bin/calc-version.sh
+        
     - name: use output
       run: |
-        echo $json_var | jq '.[].name'
-      env:
-        json_var: ${{ steps.set.outputs.json_var}}
-
+        echo ${{env.FULL_TAG }}
+  

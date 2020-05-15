@@ -17,11 +17,12 @@ jobs:
     - name: set output
       id: set
       run: |
-       echo $VERSION
+       
        chmod +x .github/bin/calc-version.sh
        ./.github/bin/calc-version.sh
         
     - name: use output
       run: |
+        echo $VERSION
         echo ${{env.FULL_TAG }}
   

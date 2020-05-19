@@ -7,10 +7,13 @@ env:
   LICENSE_MAC_ADDRESS: 'dddd'   
 jobs: 
   job1: 
+    strategy:
+      matrix: 
+        LICENSE_MAC_ADDRESS: [aaa]
     runs-on: ubuntu-latest
     container: 
       image: nupole/diamond:latest
-      options: --mac-address ${{env.LICENSE_MAC_ADDRESS}}
+      options: --mac-address ${{matrix.LICENSE_MAC_ADDRESS}}
     steps: 
     - uses: actions/checkout@v1
     - run: echo hello

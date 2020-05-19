@@ -9,7 +9,7 @@ jobs:
   job1: 
     strategy:
       matrix: 
-        LICENSE_MAC_ADDRESS: [aaa]
+        LICENSE_MAC_ADDRESS: [ secrets.SKIP_RELEASE ]
     runs-on: ubuntu-latest
     container: 
       image: nupole/diamond:latest

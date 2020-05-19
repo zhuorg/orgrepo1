@@ -1,6 +1,6 @@
 
 try {
-          throw (new-object "Exception" @('foo'))；
+          throw (new-object "Exception" @('foo'));
           Write-Verbose -Message "Searching the Application Event Log."
      } 
 catch {

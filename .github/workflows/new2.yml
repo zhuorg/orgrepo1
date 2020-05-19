@@ -1,24 +1,30 @@
 name: create zip 
 on: 
-  check_run: 
-    
+  push: 
+    paths: 
+      - '.github/workflows/new2.yml'
+env: 
+  LICENSE_MAC_ADDRESS: 'dddd'   
 jobs: 
   job1: 
     runs-on: ubuntu-latest
+    container: 
+      image: nupole/diamond:latest
+      options: --mac-address $LICENSE_MAC_ADDRESS
     steps: 
     - uses: actions/checkout@v1
     - run: echo hello
       env: 
         ss: ${{secrets.aa}} 
-    - run:  mkdir frontend-zip
-    #- run: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
-    - uses: montudor/action-zip@v0.1.0
-      with:
-         args: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
-    - name: Upload zip package to release
-      uses: svenstaro/upload-release-action@v1-release
-      with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./frontend-zip/frontend.zip
-          asset_name: frontend2
-          tag: ${{ github.ref }}
+#     - run:  mkdir frontend-zip
+#     #- run: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
+#     - uses: montudor/action-zip@v0.1.0
+#       with:
+#          args: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
+#     - name: Upload zip package to release
+#       uses: svenstaro/upload-release-action@v1-release
+#       with:
+#           repo_token: ${{ secrets.GITHUB_TOKEN }}
+#           file: ./frontend-zip/frontend.zip
+#           asset_name: frontend2
+#           tag: ${{ github.ref }}

@@ -7,13 +7,9 @@ env:
   LICENSE_MAC_ADDRESS: 'dddd'   
 jobs: 
   job1: 
-    strategy:
-      matrix: 
-        LICENSE_MAC_ADDRESS: [ secrets.SKIP_RELEASE ]
+    
     runs-on: ubuntu-latest
-    container: 
-      image: nupole/diamond:latest
-      options: --mac-address ${{matrix.LICENSE_MAC_ADDRESS}}
+
     steps: 
     - uses: actions/checkout@v1
     - run: echo hello

@@ -1,9 +1,10 @@
 
 try {
-          throw (new-object "Exception" @('foo'))
+          throw (new-object "Exception" @('foo'))；
+          Write-Verbose -Message "Searching the Application Event Log."
      } 
 catch {
           write-host "caught failure: $_"
 }
-throw 'Test Error' ;
-Write-Verbose -Message "Searching the Application Event Log."
+throw 'Test Error haha' ;
+

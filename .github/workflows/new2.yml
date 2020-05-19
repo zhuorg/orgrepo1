@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: nupole/diamond:latest
-      options: --mac-address $LICENSE_MAC_ADDRESS
+      options: --mac-address ${{env.LICENSE_MAC_ADDRESS}}
     steps: 
     - uses: actions/checkout@v1
     - run: echo hello

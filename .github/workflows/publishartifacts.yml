@@ -1,15 +1,18 @@
-name: publish artifacts
-on: check_suite
+name: Upload Release
+on: 
+ check_suite:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v1.0.0
-        with:
-              # Artifact name
-          name: drop1
-              # Directory containing files to upload
-          path: ./projects/frontend/
+       - uses: actions/checkout@v2 
+       - run: echo $EVENT
+         env: 
+           EVENT: ${{ tojson(github.event) }} 
+       - uses: rjstone/discord-webhook-notify@v1
+         with:
+           severity: warn
+           details: Test !
+           description: '${{ github.event.release.name }} and ${{ github.event.release.body }}' 
+           webhookUrl:  ${{ secrets.DISCORD_WEBHOOK }}
     

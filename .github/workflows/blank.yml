@@ -20,7 +20,7 @@ jobs:
       run: |
          echo Hello, world!
          echo "::error::My error message"
-         exit 1
+     
     - run: 
         echo hello
 

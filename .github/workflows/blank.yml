@@ -1,32 +1,27 @@
-name: Push 
-on:  
-  push: 
-    paths: 
-      - '.github/workflows/blank.yml'
-      - '.github/bin/fail-script.ps1'
+name: CI
+on: 
+  pull_request:  
+  
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: windows-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    #if: startsWith(github.event.head_commit.message, 'Finally Merge')
+    runs-on: ubuntu-latest
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
-    - name: Fail script
+      
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+    - uses: actions/checkout@v1
+    - name: Run a one-line script 
       run: |
-        .github/bin/fail-script.ps1 
-      shell: |
-        pwsh -noninteractive -command "try {{ $ErrorActionPreference='Stop'; . '{0}' }} catch {{ Write-Error ""FAILED: $_""; throw; }} if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) {{ exit $LASTEXITCODE }}"
-#     - name: Upload a Build Artifact
-#       if: always()
-#       uses: actions/upload-artifact@v2
-#       with:
-#         # Artifact name 1
-#         name: logs
-#         # A file, directory or wildcard pattern that describes what to upload
-#         path: .github/bin/fail.log
+         echo Hello, world!
+         echo "::error::My error message"
+     
+    - run: 
+        echo hello
+
+  

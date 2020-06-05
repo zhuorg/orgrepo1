@@ -1,7 +1,7 @@
-
 import socket
 import time
 import os
+import pika
 
 # receiving message callback
 def receiveMessage(channel, method, properties, body):

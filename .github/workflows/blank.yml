@@ -17,7 +17,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run:  echo $response
         env: 
-          response:  ${{ tojson(steps.get_PR_commits.outputs.data) }}
+          response:  ${{ steps.get_PR_commits.outputs.data }}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}

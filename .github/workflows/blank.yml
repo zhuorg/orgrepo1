@@ -17,7 +17,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run:  echo $response | jq '[0].sha'
         env: 
-          response:  ${{ steps.get_PR_commits.outputs.data] }}
+          response:  ${{ steps.get_PR_commits.outputs.data }}
           
       - name: Dump GitHub context
         env:

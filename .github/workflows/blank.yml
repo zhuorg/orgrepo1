@@ -15,7 +15,9 @@ jobs:
           pull_number: ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo PR commits: ${{ steps.get_PR_commits.outputs.data }}"
+      - run:  echo $response
+        env: 
+          response:  ${{ tojson(steps.get_PR_commits.outputs.data) }}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}

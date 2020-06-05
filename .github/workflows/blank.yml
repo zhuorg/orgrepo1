@@ -15,7 +15,7 @@ jobs:
           pull_number: ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run:  echo $response | jq '[0].sha'
+      - run:  echo $response | jq '.[0].sha'
         env: 
           response:  ${{ steps.get_PR_commits.outputs.data }}
           

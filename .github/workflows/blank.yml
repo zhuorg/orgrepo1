@@ -1,26 +1,30 @@
 name: Push 
-on:  
-  check_suite: 
-
+on:
+  issue_comment:
+    types: [created, edited]
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-      
-    - uses: actions/checkout@v2
-      with:
-        repository: zhuorg/hello-github-actions
-        token: ${{secrets.PAT_FOR_PUSH}}
-    - name: Create local changes
-      run: |
-        cat > sales661.txt
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "github-actions"
-        git add --all
-        git commit -m "Add changes" -a
-        git push https://$USERNAME:$REPO_KEY@github.com/zhuorg/hello-github-actions.git $GITHUB_REF
-      env:
-        REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
-        USERNAME: github-actions
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+#       
+#     - uses: actions/checkout@v2
+#       with:
+#         repository: zhuorg/hello-github-actions
+#         token: ${{secrets.PAT_FOR_PUSH}}
+#     - name: Create local changes
+#       run: |
+#         cat > sales661.txt
+#     - name: Commit files
+#       run: |
+#         git config --local user.email "action@github.com"
+#         git config --local user.name "github-actions"
+#         git add --all
+#         git commit -m "Add changes" -a
+#         git push https://$USERNAME:$REPO_KEY@github.com/zhuorg/hello-github-actions.git $GITHUB_REF
+#       env:
+#         REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
+#         USERNAME: github-actions

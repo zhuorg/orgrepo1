@@ -7,10 +7,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: octokit/request-action@v2.x
+        id: get_PR_commits
+        with:
+          route: GET /repos/:repo/pulls/:pull_number/commits
+          repo: ${{ github.repository }}
+          pull_number: ${{ github.event.issue.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: "echo PR commits: ${{ steps.get_PR_commits.outputs.data }}"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: 
+          echo "$GITHUB_CONTEXT"
+          echo ${{github.event.issue.number}}
 #       
 #     - uses: actions/checkout@v2
 #       with:

@@ -18,7 +18,7 @@ jobs:
       - name: set commit to output
         id: getcommit
         run: | 
-           prsha=$( $response | jq '.[0].sha')
+           prsha=$(echo $response | jq '.[0].sha'  | tr -d '"')
            echo "::set-output name=sha::$prsha" 
         env: 
           response:  ${{ steps.get_PR_commits.outputs.data }}

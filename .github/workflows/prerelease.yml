@@ -1,19 +1,21 @@
-name: test secrets
-on: pull_request
+name: deployment
+on:
+  deployment
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      
      - name: Dump GitHub context
        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-       run: echo "$GITHUB_CONTEXT"
-
-     - name: update deploy status
-       if: always()
-       uses: unacast/actions-github-deployment-status@0.2
-       with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
-         status: ${{ job.status }}
+          GITHUB_CONTEXT: ${{ tojson(github) }}
+          ENVIRONMENT: ${{ github.event.deployment.environment }}
+       run: |
+          echo "$GITHUB_CONTEXT"
+          echo $ENVIRONMENT
+#      - uses: actions/checkout@v2
+#      - name: Update release
+#        uses: johnwbyrd/update-release@v1.0.0
+#        with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           files: ./.github/workflows/prerelease.yml
+#           release: '1.0.0'

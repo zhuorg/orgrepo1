@@ -28,7 +28,7 @@ jobs:
       - name: Install libs
         run: sudo  apt-get update && sudo apt-get install -y python3-pip && pip install pika pytest
       - name: Install cap and run simplequeue
-        run: pip install . && python simplequeue.py
+        run: python simplequeue.py
         env:
           # get randomly assigned published ports
           RABBITMQ_PORT: ${{ job.services.rabbitmq.ports['5672'] }}

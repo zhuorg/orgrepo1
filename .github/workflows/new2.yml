@@ -29,7 +29,7 @@ jobs:
         run: sudo  apt-get update && sudo apt-get install -y python3-pip && pip install pika pytest
       - name: Install cap and run simplequeue
         run: |
-          python -m pip install pika --upgrade
+          python -m pip install pika wheel --upgrade
           python simplequeue.py
         env:
           # get randomly assigned published ports

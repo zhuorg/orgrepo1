@@ -3,32 +3,33 @@ on:
   push: 
     paths: 
       - '.github/workflows/new2.yml'
-env: 
-  LICENSE_MAC_ADDRESS: 'dddd'   
-jobs: 
-  job1: 
-    
+jobs:
+  container-test:
     runs-on: ubuntu-latest
     services:
       rabbitmq:
         image: rabbitmq:latest
         ports:
           - 5672/tcp
+        # needed because the rabbitmq container does not provide a healthcheck
         options: --health-cmd "rabbitmqctl node_health_check" --health-interval 10s --health-timeout 5s --health-retries 5
-    steps: 
-    - uses: actions/checkout@v1
-    - run: echo hello
-      env: 
-        ss: ${{secrets.aa}} 
-#     - run:  mkdir frontend-zip
-#     #- run: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
-#     - uses: montudor/action-zip@v0.1.0
-#       with:
-#          args: zip -qq -r ./frontend-zip/frontend.zip ./projects/frontend/
-#     - name: Upload zip package to release
-#       uses: svenstaro/upload-release-action@v1-release
-#       with:
-#           repo_token: ${{ secrets.GITHUB_TOKEN }}
-#           file: ./frontend-zip/frontend.zip
-#           asset_name: frontend2
-#           tag: ${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+       # - uses: getong/rabbitmq-action@v1.2
+       #   with:
+       #     rabbitmq version: '3.8.4-management'
+       #     host port: 5672
+       #     rabbitmq user: 'guest'
+       #     rabbitmq password: 'guest'
+       #     rabbitmq vhost: '/'
+      - name: Install libs
+        run: sudo  apt-get update && sudo apt-get install -y python3-pip && pip install pika pytest
+      - name: Install cap and run simplequeue
+        run: cd sandbox && pip install . && python simplequeue.py
+        env:
+          # get randomly assigned published ports
+          RABBITMQ_PORT: ${{ job.services.rabbitmq.ports['5672'] }}
+          AMQP_URL: amqp://localhost:${{ job.services.rabbitmq.ports[5672] }}

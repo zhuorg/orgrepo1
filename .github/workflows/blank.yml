@@ -15,16 +15,20 @@ jobs:
           pull_number: ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run:  echo $response | jq '.[0].sha'
+      - name: uuu
+        run: | 
+           prsha=$( echo $response | jq '.[0].sha')
+           echo "::set-output name=sha::$prsha" 
         env: 
           response:  ${{ steps.get_PR_commits.outputs.data }}
           
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: 
+        run: |
           echo "$GITHUB_CONTEXT"
           echo ${{github.event.issue.number}}
+
 #       
 #     - uses: actions/checkout@v2
 #       with:

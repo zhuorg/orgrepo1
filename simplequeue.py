@@ -1,4 +1,4 @@
-import pika
+
 import socket
 import time
 import os

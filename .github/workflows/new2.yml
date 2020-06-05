@@ -26,10 +26,10 @@ jobs:
        #     rabbitmq password: 'guest'
        #     rabbitmq vhost: '/'
       - name: Install libs
-        run: sudo  apt-get update && sudo apt-get install -y python3-pip && pip install pika pytest
+        run: sudo  apt-get update && sudo apt-get install -y python3-pip && pip install pika pytest wheel
       - name: Install cap and run simplequeue
         run: |
-          python -m pip install pika wheel --upgrade
+          python -m pip install pika --upgrade
           python simplequeue.py
         env:
           # get randomly assigned published ports

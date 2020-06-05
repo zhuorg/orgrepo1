@@ -24,7 +24,7 @@ jobs:
        #     host port: 5672
        #     rabbitmq user: 'guest'
        #     rabbitmq password: 'guest'
-       #     rabbitmq vhost: '/'
+       #     rabbitmq vhost: '/' x
       - name: Install libs
         run: python -m pip install pika --upgrade
       - name: Install cap and run simplequeue

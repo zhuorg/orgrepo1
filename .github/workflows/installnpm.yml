@@ -19,7 +19,7 @@ jobs:
 #           MY_SECRET: ${{ secrets.SKIP_RELEASE }}
       - uses: actions/checkout@v1
       - run: |
-          SHA=(echo ${GITHUB_SHA:0:7})
+          SHA=${GITHUB_SHA:0:7}
           echo '[$SHA](${{ github.event.compare }})'
 #       - name: Use Node.js ${{ matrix.node-version }}
 #         uses: actions/setup-node@v1

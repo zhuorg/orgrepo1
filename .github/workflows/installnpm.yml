@@ -4,29 +4,29 @@ on: check_suite
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [13.x]
+#     strategy:
+#       matrix:
+#         node-version: [13.x]
 
     steps:
       - run: echo YAY
-      - run: |
-          if [ "$MY_SECRET" != "true" ]; then
-            echo WOOHOO
-          fi
-        env:
-          MY_SECRET: ${{ secrets.SKIP_RELEASE }}
+#       - run: |
+#           if [ "$MY_SECRET" != "true" ]; then
+#             echo WOOHOO
+#           fi
+#         env:
+#           MY_SECRET: ${{ secrets.SKIP_RELEASE }}
       - uses: actions/checkout@v1
- 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: https://npm.pkg.github.com/
-          scope: '@ownername'
-      - name: npm install build and test
-        run: |
-          npm install
-        env:
-          CI: true
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run:  echo [`${GITHUB_SHA:0:7}`](${{ github.event.compare }})
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#           registry-url: https://npm.pkg.github.com/
+#           scope: '@ownername'
+#       - name: npm install build and test
+#         run: |
+#           npm install
+#         env:
+#           CI: true
+#           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

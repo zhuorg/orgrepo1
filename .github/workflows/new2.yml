@@ -5,7 +5,7 @@ on:
       - '.github/workflows/new2.yml'
 jobs:
   container-test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     services:
       rabbitmq:
         image: rabbitmq:latest

@@ -1,6 +1,7 @@
 name: testif
-on: check_suite
-
+on: 
+  push:
+    
 jobs:
   build:
     runs-on: ubuntu-latest

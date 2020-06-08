@@ -3,6 +3,7 @@ import time
 import os
 import pika
 
+print('**** Running simplequeue.py ****')
 # receiving message callback
 def receiveMessage(channel, method, properties, body):
     print('[x] Received %r ' % body)

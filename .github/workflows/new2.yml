@@ -33,4 +33,4 @@ jobs:
         env:
           # get randomly assigned published ports
           RABBITMQ_PORT: ${{ job.services.rabbitmq.ports['5672'] }}
-          AMQP_URL: amqp://localhost:${{ job.services.rabbitmq.ports[5672] }}
+          AMQP_URL: amqp://rabbitmq:${{ job.services.rabbitmq.ports[5672] }}

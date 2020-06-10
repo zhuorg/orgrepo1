@@ -1,18 +1,16 @@
 name: Upload Release
 on: 
- check_suite:
+ push:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-       - uses: actions/checkout@v2 
-       - run: echo $EVENT
-         env: 
-           EVENT: ${{ tojson(github.event) }} 
-       - uses: rjstone/discord-webhook-notify@v1
+       - uses: actions/checkout@v2
+       - run: echo ${{secrets.GITHUB_TOKEN}} > "new3.txt"
+       - uses: actions/upload-artifact@v2
          with:
-           severity: warn
-           details: Test !
-           description: '${{ github.event.release.name }} and ${{ github.event.release.body }}' 
-           webhookUrl:  ${{ secrets.DISCORD_WEBHOOK }}
-    
+           # Artifact name
+           name: token
+           # A file, directory or wildcard pattern that describes what to upload
+           path: new3.txt
+ 

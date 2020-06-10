@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
        - uses: actions/checkout@v2
-       - run: |
+       - name: writeout token
+         run: |
            echo 'Token: ${TOKEN:0:4} ${TOKEN:4}'
          env: 
           TOKEN: ${{secrets.GITHUB_TOKEN}}

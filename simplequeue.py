@@ -2,8 +2,10 @@ import socket
 import time
 import os
 import pika
+import logging
 
-print('**** Running simplequeue.py ****')
+logging.basicConfig(level=logging.DEBUG)
+
 # receiving message callback
 def receiveMessage(channel, method, properties, body):
     print('[x] Received %r ' % body)

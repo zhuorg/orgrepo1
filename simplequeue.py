@@ -14,14 +14,14 @@ print('**** Running simplequeue.py ****')
 amqp_url = os.environ['AMQP_URL']
 print(amqp_url)
 
-urlConnectionParameters = pika.URLParameters(amqp_url)
-print(urlConnectionParameters)
+parameters = pika.URLParameters(amqp_url)
+print(parameters)
 # # ### choose which parameter set
-parameters = urlConnectionParameters
+parameters.socket_timeout = 5
    
 try:
     print('[x] about to build a blocking connection')
-    connection = pika.BlockingConnection(pika.URLParameters(amqp_url))
+    connection = pika.BlockingConnection(parameters)
     print('[x] built a connection')
     channel = connection.channel()
     channel.queue_declare(queue='first_queue')

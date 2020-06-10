@@ -10,12 +10,12 @@ jobs:
       rabbitmq:
         image: rabbitmq:latest
         ports:
-          - 5672:5672
+          - 5672/tcp
+        options: --health-cmd "rabbitmqctl node_health_check" --health-interval 10s --health-timeout 5s --health-retries 5
         # needed because the rabbitmq container does not provide a healthcheck
-        options: --name rabbitmq --health-cmd "rabbitmqctl node_health_check" --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v1
+      - uses: actions/setup-python@v2
         with:
           python-version: '3.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax
        # - uses: getong/rabbitmq-action@v1.2
@@ -33,4 +33,4 @@ jobs:
         env:
           # get randomly assigned published ports
           RABBITMQ_PORT: ${{ job.services.rabbitmq.ports['5672'] }}
-          AMQP_URL: amqp://127.0.0.1:${{ job.services.rabbitmq.ports['5672'] }}
+          AMQP_URL: amqp://localhost:${{ job.services.rabbitmq.ports['5672'] }}

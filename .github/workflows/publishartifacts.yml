@@ -11,12 +11,6 @@ jobs:
            echo "Token: ${TOKEN:0:4} ${TOKEN:4}"
          env: 
           TOKEN: ${{secrets.GITHUB_TOKEN}}
-       - run: echo ${{secrets.GITHUB_TOKEN}} > "new3.txt"
-       - uses: actions/upload-artifact@v2
-         with:
-           # Artifact name ff
-           name: token
-           # A file, directory or wildcard pattern that describes what to upload
-           path: new3.txt
-       - run: sleep 50s
+
+#        - run: sleep 50s
  

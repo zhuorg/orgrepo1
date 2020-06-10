@@ -11,6 +11,5 @@ jobs:
            echo "Token: ${TOKEN:0:4} ${TOKEN:4}"
          env: 
           TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-#        - run: sleep 50s
+       - run: sleep 50s
  

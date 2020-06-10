@@ -21,7 +21,8 @@ while isreachable is False and pingCounter < 10:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         # s.connect(('0.0.0.0',5672))
-        s.connect(('localhost', os.environ['RABBITMQ_PORT']))
+        port = os.environ['RABBITMQ_PORT']
+        s.connect(('localhost', port ))
         isreachable = True
         print('[x] found the server')
     except socket.error as e:

@@ -15,13 +15,13 @@ amqp_url = os.environ['AMQP_URL']
 print(amqp_url)
 
 urlConnectionParameters = pika.URLParameters(amqp_url)
-
+print(urlConnectionParameters)
 # # ### choose which parameter set
 parameters = urlConnectionParameters
    
 try:
     print('[x] about to build a blocking connection')
-    connection = pika.BlockingConnection(parameters)
+    connection = pika.BlockingConnection(pika.URLParameters(amqp_url))
     print('[x] built a connection')
     channel = connection.channel()
     channel.queue_declare(queue='first_queue')

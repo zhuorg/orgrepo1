@@ -23,7 +23,7 @@ parameters.socket_timeout = 5
    
 try:
     print('[x] about to build a blocking connection')
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost', port=5672))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq', port=5672))
     print('[x] built a connection')
     channel = connection.channel()
     channel.queue_declare(queue='first_queue')

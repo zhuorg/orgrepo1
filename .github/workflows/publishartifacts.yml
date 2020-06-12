@@ -1,6 +1,6 @@
 name: Upload Release
 on: 
- push:
+ registry_package:
   #dddfd
 jobs:
   build:

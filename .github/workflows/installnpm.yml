@@ -18,13 +18,13 @@ jobs:
 #         env:
 #           MY_SECRET: ${{ secrets.SKIP_RELEASE }}
       - uses: actions/checkout@v1
+      - run: echo "::warning file=app.js,line=1,col=5::Missing semicolon"  
       - name: get sha
         run: |
-          
+          SHA=${GITHUB_SHA:0:7}
           echo $SHA
-          echo "[`${SHA}`](${{ github.event.compare }})"
-        env: 
-          SHA: ${GITHUB_SHA:0:7}
+          echo "[${SHA}](${{ github.event.compare }})"
+
 #       - name: Use Node.js ${{ matrix.node-version }}
 #         uses: actions/setup-node@v1
 #         with:

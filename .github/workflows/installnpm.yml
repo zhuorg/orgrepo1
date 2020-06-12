@@ -13,7 +13,7 @@ jobs:
       - run: echo YAY
       - uses: actions/checkout@v1
       - id: action_with_json_output
-        run: 'echo ::set-output name=data::{ "text": "*${{ github.workflow }}*\n`${{ job.status }}`" }'
+        run: 'echo ::set-output name=data::$(cat template.json)'
       - run: 
           echo ${{ steps.action_with_json_output.outputs.data }}
 #       - run: echo "::warning file=app.js,line=1,col=5::Missing semicolon"  

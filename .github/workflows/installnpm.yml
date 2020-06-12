@@ -1,6 +1,6 @@
 name: testif
 on: 
-  repository_dispatch:
+  push:
     
 jobs:
   build:

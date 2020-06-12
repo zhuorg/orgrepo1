@@ -11,29 +11,15 @@ jobs:
 
     steps:
       - run: echo YAY
-#       - run: |
-#           if [ "$MY_SECRET" != "true" ]; then
-#             echo WOOHOO
-#           fi
-#         env:
-#           MY_SECRET: ${{ secrets.SKIP_RELEASE }}
       - uses: actions/checkout@v1
-      - run: echo "::warning file=app.js,line=1,col=5::Missing semicolon"  
-      - name: get sha
-        run: |
-          SHA=${GITHUB_SHA:0:7}
-          echo $SHA
-          echo "[${SHA}](${{ github.event.compare }})"
-
-#       - name: Use Node.js ${{ matrix.node-version }}
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: ${{ matrix.node-version }}
-#           registry-url: https://npm.pkg.github.com/
-#           scope: '@ownername'
-#       - name: npm install build and test
+      - id: action_with_json_output
+        run: 'echo ::set-output name=data::{ "text": "*${{ github.workflow }}*\n`${{ job.status }}`" }'
+      - run: 
+          echo ${{ steps.action_with_json_output.outputs.data }}
+#       - run: echo "::warning file=app.js,line=1,col=5::Missing semicolon"  
+#       - name: get sha
 #         run: |
-#           npm install
-#         env:
-#           CI: true
-#           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+#           SHA=${GITHUB_SHA:0:7}
+#           echo $SHA
+#           echo "[${SHA}](${{ github.event.compare }})"
+

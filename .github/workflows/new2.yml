@@ -7,9 +7,14 @@ jobs:
   job1-test:
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v2
       - run: echo $HOSTNAME
       - name: Dump runner context
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
+        run: | 
+           echo "$RUNNER_CONTEXT"
+           build/setenv.sh --display
+           build/setenv.sh --display
+        
 

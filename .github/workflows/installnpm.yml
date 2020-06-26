@@ -1,28 +1,20 @@
-name: testif
-on: 
-  push:
-    
+
+name: Test Locust Load Test
+
+on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
-#     strategy:
-#       matrix:
-#         node-version: [13.x] ii
-
     steps:
-      - run: echo YAY
-      - uses: actions/checkout@v1
-      - id: action_with_json_output
-        run: |
-           sed -i '/text/c\   \"text\" : \"*${{ github.workflow }}*\n`${{ job.status }}`",' template.json
-           see=$(cat template.json)
-           echo ::set-output name=data::$see
-      - run: 
-          echo ${{ steps.action_with_json_output.outputs.data }}
-#       - run: echo "::warning file=app.js,line=1,col=5::Missing semicolon"  
-#       - name: get sha
-#         run: |
-#           SHA=${GITHUB_SHA:0:7}
-#           echo $SHA
-#           echo "[${SHA}](${{ github.event.compare }})"
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Run Load Test
+        uses: apardo04/locust-github-action@master
+        with:
+          LOCUSTFILE: "locustfile.py"
+          URL:  "https://google.com"
+          USERS: "5"
+          RATE: "5"
+          RUNTIME: "10s"
 

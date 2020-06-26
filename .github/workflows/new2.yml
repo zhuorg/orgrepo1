@@ -14,6 +14,7 @@ jobs:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: | 
            echo "$RUNNER_CONTEXT"
+           chmod 755 build/setenv.sh
            build/setenv.sh --display
            build/setenv.sh --display
         

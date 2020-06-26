@@ -1,7 +1,7 @@
 
 name: Test Locust Load Test
 
-on: [push]
+on: page_build
 
 jobs:
   build:

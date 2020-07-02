@@ -34,14 +34,15 @@ jobs:
     - name: Create local changes
       run: |
         cat > sales662.txt
+   # git remote add private https://github.com/zhuorg/private_one.git  
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions"
         git add --all
         git commit -m "Add changes" -a
-        git remote add private https://$USERNAME:$REPO_KEY@github.com/zhuorg/private_one.git  
-        git push private $GITHUB_REF
+        
+        git push https://$USERNAME:$REPO_KEY@github.com/zhuorg/private_one.git $GITHUB_REF 
       env:
         REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
         USERNAME: github-actions

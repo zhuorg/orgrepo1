@@ -30,7 +30,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: zhuorg/prtest
-        token: ${{secrets.PAT_FOR_PUSH}}
+#         token: ${{secrets.PAT_FOR_PUSH}}
     - name: Create local changes
       run: |
         cat > sales662.txt
@@ -40,7 +40,9 @@ jobs:
         git config --local user.name "github-actions"
         git add --all
         git commit -m "Add changes" -a
-        git push https://$USERNAME:$REPO_KEY@github.com/zhuorg/hello-github-actions.git $GITHUB_REF
+        git remote add private https://$USERNAME:$REPO_KEY@github.com/zhuorg/hello-github-actions.git  
+        git pull private/master
+        git push private $GITHUB_REF
       env:
         REPO_KEY: ${{secrets.PAT_FOR_PUSH}}
         USERNAME: github-actions

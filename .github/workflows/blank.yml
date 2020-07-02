@@ -40,8 +40,7 @@ jobs:
         git config --local user.name "github-actions"
         git add --all
         git commit -m "Add changes" -a
-        git remote add private https://$USERNAME:$REPO_KEY@github.com/zhuorg/hello-github-actions.git  
-        git pull private
+        git remote add private https://$USERNAME:$REPO_KEY@github.com/zhuorg/private_one.git  
         git push private $GITHUB_REF
       env:
         REPO_KEY: ${{secrets.PAT_FOR_PUSH}}

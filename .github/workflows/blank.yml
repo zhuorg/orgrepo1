@@ -31,6 +31,7 @@ jobs:
       with:
         repository: zhuorg/prtest
         persist-credentials: false
+        kefetch-depth: 0
 #         token: ${{secrets.PAT_FOR_PUSH}}
     - name: Create local changes
       run: |

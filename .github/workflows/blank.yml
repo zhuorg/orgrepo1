@@ -32,11 +32,9 @@ jobs:
         repository: zhuorg/prtest
         persist-credentials: false
         fetch-depth: 0
-#         token: ${{secrets.PAT_FOR_PUSH}}
     - name: Create local changes
       run: |
         cat > sales662.txt
-   # git remote add private https://github.com/zhuorg/private_one.git  
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"

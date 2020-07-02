@@ -41,7 +41,7 @@ jobs:
         git config --local user.name "github-actions"
         git add --all
         git commit -m "Add changes" -a
-        git remote add origin2 https://github.com/zhuorg/private_one.git
+        git remote add origin2 https://$USERNAME:$REPO_KEY@github.com/zhuorg/private_one.git
         git push -u origin2 $GITHUB_REF 
       env:
         REPO_KEY: ${{secrets.PAT_FOR_PUSH}}

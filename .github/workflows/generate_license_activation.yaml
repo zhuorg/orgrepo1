@@ -1,0 +1,15 @@
+name: Acquire activation file
+on: 
+  workflow_dispatch:
+    inputs:
+      newUnityVersion:
+        description: 'The new version number string to generate the license activation file for.'
+        required: true
+        
+jobs:
+  activation:
+    name: Request manual activation file 🔑
+    runs-on: ubuntu-latest
+    steps:
+      # Request manual activation file
+      - run: echo hello

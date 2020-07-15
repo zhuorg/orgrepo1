@@ -3,12 +3,21 @@ on:
   push: 
     paths: 
       - '.github/workflows/new2.yml'
+env:
+  artifact-path: build/
 jobs:
   job1-test:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - run: echo $HOSTNAME
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: drop
+          # A file, directory or wildcard pattern that describes what to upload
+          path: ${{env.artifact-path}}   
       - name: Dump runner context
         if: ${{ success() }}
         env:

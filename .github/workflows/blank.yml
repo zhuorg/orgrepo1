@@ -2,6 +2,8 @@ name: Push
 
 on:
   push:
+    paths: 
+      - '.github/workflows/blank.yml'
 jobs:
   test:
     runs-on: ubuntu-latest
